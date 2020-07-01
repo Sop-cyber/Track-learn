@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %} 
+{% load bootstrap4 %}
+{% block content %}
+  <div class="card card-body">
+    <h3>
+      <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+    </h3>
+    <!-- <h5>Add a new entry:</h5> -->
+    <form action="{% url 'learning_logs:new_entry' topic.id %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button name="sumbit" class="btn btn-outline-primary">Add entry</button>
+    </form>
+  </div>
+
+{% endblock content %}
